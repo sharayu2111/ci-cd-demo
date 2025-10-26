@@ -4,20 +4,22 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                echo '📦 Installing dependencies...'
+                bat '"C:\\Users\\Sharayu Pathare\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\pip.exe" install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'pytest || echo "No tests found, continuing..."'
+                echo '🧪 Running tests...'
+                bat '"C:\\Users\\Sharayu Pathare\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pytest || echo "No tests found, continuing..."'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Starting Flask app...'
-                bat 'start /B python app.py'
+                echo '🚀 Starting Flask app...'
+                bat 'start /B "C:\\Users\\Sharayu Pathare\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" app.py'
             }
         }
     }
